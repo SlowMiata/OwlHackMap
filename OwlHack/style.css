@@ -1,0 +1,18 @@
+#myDiv {
+    height: 100vh;
+    
+
+}
+#myDiv2{
+    display: none;
+}
+
+.rand {
+    background-color: blue;
+    height: 100vh;
+}
+
+a{
+    font-size: 30px;
+    text-align: center;
+}

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Owlhack</title>
+    
+    <script src="plotly-2.18.0.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="cloudflare.js"></script>
+    <script src="index.js"></script>
+    
+   
+</head>
+<body>
+    
+
+        
+    <a href="javascript:;" onmousedown="toggleDiv('mydiv');">Toggle Crime Catagories</a>
+        
+    <div class="rand" id='mydivon'>
+    </div>
+
+    <div id = 'mydivoff' class ="rand">  </div>
+
+
+    
+   <script>
+
+        let crime2023 = "https://raw.githubusercontent.com/hahuynh1/owlhack/main/Philly%20Crime%20Stat%202023.csv";
+        let crime2022 =  "https://raw.githubusercontent.com/hahuynh1/owlhack/main/Philly%20Crime%20Stat%202022.csv";
+        let theft;
+        let assault;
+        
+
+        
+        
+
+            d3.csv(
+            crime2022, 
+            function(err, rows) {
+                function unpack(rows, key) {
+                    return rows.map(function(row) {
+                        return row[key];
+                    });
+                }
+
+                
+
+                var data = [
+                    {
+                        type: "scattermapbox",
+                        text: unpack(rows, "crime_category"),
+                        lon: unpack(rows, "point_x"),
+                        lat: unpack(rows, "point_y"),
+                        marker: { color: "fuchsia", size: 4, opacity: 0.3 }
+                    }
+                ];
+
+                var layout = {
+                    dragmode: "zoom.0214",
+                    mapbox: { style: "open-street-map", center: { lat: 39.9587, lon: -75.165 }, zoom: 11 },
+                    margin: { r: 0, t: 0, b: 0, l: 0 }
+                };
+
+                Plotly.newPlot("mydivon", data, layout);
+            }
+        );
+
+        d3.csv(
+            crime2023, 
+            function(err, rows) {
+                function unpack(rows, key) {
+                    return rows.map(function(row) {
+                        return row[key];
+                    });
+                }
+
+                var data = [
+                    {
+                        type: "scattermapbox",
+                        text: unpack(rows, "crime_category"),
+                        
+                        lon: unpack(rows, "point_x"),
+                        lat: unpack(rows, "point_y"),
+                        marker: { color: "blue", size: 4, opacity: 0.3 }
+                    }
+                ];
+
+                var layout = {
+                    dragmode: "zoom.0214",
+                    mapbox: { style: "open-street-map", center: { lat: 39.9587, lon: -75.165 }, zoom: 11 },
+                    margin: { r: 0, t: 0, b: 0, l: 0 }
+                };
+
+                Plotly.newPlot("mydivoff", data, layout);
+            }
+        );
+
+
+
+    
+   </script>
+
+
+
+    
+</body>
+</html>
