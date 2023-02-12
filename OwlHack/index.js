@@ -32,8 +32,6 @@ function toggleDiv(divid)
 // 			lonlat.innerHTML = 'Latitude = ' + data.results[0].geometry.location.lat + ' ' + '<br>Longitude = ' + data.results[0].geometry.location.lng;
 // 		});
 
-// 	} 
-//}
 
 
 
