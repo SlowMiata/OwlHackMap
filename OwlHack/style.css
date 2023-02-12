@@ -3,10 +3,13 @@
     
 
 }
+h1{
+    text-align: center;
+}
 
 .rand {
-    background-color: blue;
-    height: 100vh;
+    background-color: lemonchiffon;
+    height: 90vh;
 }
 
 a{

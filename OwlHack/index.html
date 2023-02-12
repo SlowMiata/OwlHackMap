@@ -14,180 +14,28 @@
    
 </head>
 <body>
-
-   
-
-    
-
         
     <a href="javascript:;" onmousedown="toggleDiv('mydiv');">Toggle Crime Categories</a>
-        
-    <div class="rand" id='mydivon'> </div>
-
-    <div id = 'mydivoff' class ="rand">  </div>
-
-    <div id = "mydiv3" class = "rand"> </div>
-
-    <div id = "mydiv4" class = "rand"> </div>
-
-    
-
-
-    
-   <script>
-
-        let crime2023 = "https://raw.githubusercontent.com/hahuynh1/owlhack/main/Philly%20Crime%20Stat%202023.csv";
-        let crime2022 =  "https://raw.githubusercontent.com/hahuynh1/owlhack/main/Philly%20Crime%20Stat%202022.csv";
-        let theft;
-        let assault;
-        let other;
-        let homicide; 
-
-        //these are the other csv files
-
-        /*longitude, latitude for universites
-        Temple -39.9812° N, 75.1554° W 
-        UPenn -39.9522° N, 75.1932° W
-        LaSalle -40.0390° N, 75.1558° W
-        Drexel - 39.9566° N, 75.1899° W
-
-        */ 
-        
-
-        
-        
-
-            d3.csv(
-            crime2022, 
-            function(err, rows) {
-                function unpack(rows, key) {
-                    return rows.map(function(row) {
-                        return row[key];
-                    });
-                }
-
-                var data = [
-                    {
-                        type: "scattermapbox",
-                        text: unpack(rows, "crime_category"),
-                        lon: unpack(rows, "point_x"),
-                        lat: unpack(rows, "point_y"),
-                        marker: { color: "fuchsia", size: 4, opacity: 0.3 }
-                    }
-                ];
-
-                var layout = {
-                    dragmode: "zoom.0214",
-                    mapbox: { style: "open-street-map", center: { lat: 39.9587, lon: -75.165 }, zoom: 11 },
-                    margin: { r: 0, t: 0, b: 0, l: 0 }
-                };
-
-                Plotly.newPlot("mydivon", data, layout);
-            }
-        );
-
-        d3.csv(
-            crime2023, 
-            function(err, rows) {
-                function unpack(rows, key) {
-                    return rows.map(function(row) {
-                        return row[key];
-                    });
-                }
-
-                var data = [
-                    {
-                        type: "scattermapbox",
-                        text: unpack(rows, "crime_category"),
-                        
-                        lon: unpack(rows, "point_x"),
-                        lat: unpack(rows, "point_y"),
-                        marker: { color: "blue", size: 4, opacity: 0.3 }
-                    }
-                ];
-
-                var layout = {
-                    dragmode: "zoom.0214",
-                    mapbox: { style: "open-street-map", center: { lat: 39.9587, lon: -75.165 }, zoom: 11 }, //the whole map
-                    margin: { r: 0, t: 0, b: 0, l: 0 }
-                };
-
-                Plotly.newPlot("mydivoff", data, layout);
-            }
-        );
-
-
-        d3.csv(
-            crime2023, 
-            function(err, rows) {
-                function unpack(rows, key) {
-                    return rows.map(function(row) {
-                        return row[key];
-                    });
-                }
-
-                var data = [
-                    {
-                        type: "scattermapbox",
-                        text: unpack(rows, "crime_category"),
-                        
-                        lon: unpack(rows, "point_x"),
-                        lat: unpack(rows, "point_y"),
-                        marker: { color: "red", size: 10, opacity: 1 }
-                    }
-                ];
-
-                var layout = {
-                    dragmode: "zoom.0214",
-                    mapbox: { style: "open-street-map", center: { lat: 39.9812, lon: -75.1554 }, zoom: 15 }, //temple University Temple -39.9812° N, 75.1554° W 
-
-                    margin: { r: 0, t: 0, b: 0, l: 0 }
-                };
-
-                Plotly.newPlot("mydiv3", data, layout);
-            }
-        );
-
-        d3.csv(
-            crime2023, 
-            function(err, rows) {
-                function unpack(rows, key) {
-                    return rows.map(function(row) {
-                        return row[key];
-                    });
-                }
-
-                var data = [
-                    {
-                        type: "scattermapbox",
-                        text: unpack(rows, "crime_category"),
-                        
-                        lon: unpack(rows, "point_x"),
-                        lat: unpack(rows, "point_y"),
-                        marker: { color: "cyan", size: 10, opacity: 1 }
-                    }
-                ];
-
-                var layout = {
-                    dragmode: "zoom.0214",
-                    mapbox: { style: "open-street-map", center: { lat: 39.9522, lon: -75.1932 }, zoom: 15 }, // UPenn -39.9522° N, 75.1932° W
-
-                    margin: { r: 0, t: 0, b: 0, l: 0 }
-                };
-
-                Plotly.newPlot("mydiv4", data, layout);
-            }
-        );
-       
-
-
-
-
-
-    
-   </script>
-
-
+    <h1>crimes from 2022</h1>
+    <div class="rand" id='mydiv22'> </div>
+    <h1>crimes from 2023</h1>
+    <div id = 'mydiv23' class ="rand">  </div>
+    <h1>crimes from 2023 at Temple University</h1>
+    <div id = "mydivTemple" class = "rand"> </div>
+    <h1>crimes from 2023 at UPenn</h1>
+    <div id = "mydivUPenn" class = "rand"> </div>
+    <h1>Assault</h1>
+    <div id = "mydivASSAULT" class = "rand"> </div>
+    <h1>Drug Violation</h1>
+    <div id = "mydivDRUG_VIOLATION" class = "rand"> </div>
+    <h1>Homicide</h1>
+    <div id = "mydivHOMICIDE" class = "rand"> </div>
+    <h1>Rape</h1>
+    <div id = "mydivRAPE" class = "rand"> </div>
+    <h1>Robbery</h1>
+    <div id = "mydivROBBERY" class = "rand"> </div>
+    <h1>Theft</h1>
+    <div id = "mydivTHEFT" class = "rand"> </div>
 
     
 </body>
